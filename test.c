@@ -1,82 +1,128 @@
-#define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
 
-//int Add(int a, int b)
+//int main()
 //{
-//	return a + b;
+//	char arr1[] = "###########";
+//	char arr2[] = "bit";
+//	strcpy(arr1, arr2);
+//	printf("%s\n", arr1);
+//	return 0;
+//}
+//void my_strcpy(char* x, char* y)
+//{
+//	while (*y != '\0')
+//	{
+//		*x = *y;
+//		x++;
+//		y++;
+//	}
+//	*x = *y;
+//}
+
+//void my_strcpy(char* x, char* y)
+//{
+//	while (*x++ = *y++)
+//	{
+//		;
+//	}
+//}
+
+//void my_strcpy(char* x, char* y)
+//{
+//	assert(*x != NULL);
+//	assert(*y != NULL);
+//	while (*x++ = *y++)
+//	{
+//		;
+//	}
 //}
 //
 //int main()
 //{
-//	int a = 10;
-//	int b = 20;
-//	int c = Add(a, b);
-//	printf("%d\n", c);
+//	char arr1[] = "########";
+//	char arr2[] = "bit";
+//	my_strcpy(arr1, arr2);
+//	printf("%s\n", arr1);
 //	return 0;
 //}
+//#include <assert.h>
+//int my_strlen(char* x)
+//{
+//	//int i = 0;
+//	assert(*x != NULL);
+//	int count = 0;
+//	while (*x++ != NULL)
+//	{
+//		//*x++;
+//		count++;
+//	}
+//	return count;
+//}
+//
 //int main()
 //{
-//	int a = 0;
-//	int i = 0;
-//	int sum = 0;
-//	int ret = 1;
-//	scanf("%d", &a);
-//	for (i = 1; i <= a; i++)
-//	{
-//		int j = 0;
-//		
-//		for (j = 1; j <=i ; j++)
-//		{
-//			ret = ret*j;
-//		}
-//		sum = sum + ret;
-//		int ret = 1;
-//		
-//	}
-//	printf("sum = %d\n", sum);
+//	char arr[] = "hello world !";
+//	int len = my_strlen(arr);
+//	printf("ret = %d\n", len);
 //	return 0;
 //}
-//int  Fact(int a)
+
+//int main()
 //{
-//	int i = 0;
-//	int ret = 1;
-//	for (i = 1; i <=a; i++)
+//	const int a = 10;
+//	const int* p = &a;
+//	*p = 20;
+//	printf("%d\n", a);
+//	return 0;
+//
+//}
+#include <assert.h>
+//char* my_strcpy(char*x,const char* y)
+//{
+//	char* ret = x;
+//	assert(*x != NULL);
+//	assert(*y != NULL);
+//	while (*x++ = *y++)//利用\0assic码值为0来结束循环
 //	{
-//		ret = ret*i;
+//		;
 //	}
 //	return ret;
 //}
 //
 //int main()
 //{
-//	int a = 0;
-//	scanf("%d", &a);
-//	int ret = Fact(a);
-//	printf("ret = %d\n", ret);
+//	char arr1[] = "#########";
+//	char arr2[] = "bit";
+//	printf("%s\n", my_strcpy(arr1,arr2));
 //	return 0;
 //}
 
+//int my_strlen(const char* x)
+//{
+//	assert(*x != NULL);//断言，确定不是野指针
+//	int count = 0;
+//	while ((*x++) != '\0')
+//	{
+//		count++;
+//	}
+//	return count;
+//}
+//
 //int main()
 //{
-//	int i = 0;
-//	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-//	
-//	for (i = 0; i <= 12; i++)
-//	{
-//		printf("hehe\n");
-//		arr[i] = 0;
-//		
-//	}
+//	char arr[] = "hello world !";
+//	//int len = my_strlen(arr);
+//	printf("%d\n", my_strlen(arr));
 //	return 0;
 //}
+
+void test()
+{
+	printf("hello world !\n");
+}
 
 int main()
 {
-	
-	char arr1[] = "##########";
-	char arr2[] = "bit";
-	
-	strcpy(arr2, arr1);
-	printf("%s\n", arr2);
+	test();
 	return 0;
 }
