@@ -1,143 +1,84 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-#include<stdio.h>
-#include <string.h>
-#include <assert.h>
-#include <math.h>
+#include <stdio.h>
+//喝汽水问题，一瓶汽水1元钱，两个空瓶可以换一瓶汽水，20元可以喝多少汽水
 //int main()
 //{
-//	int a[2][3] = {1,2,3,4,5};
-//	int* p =((a+1));
-//	//p = 10;
-//	printf("%d\n", *p);
-//	return 0;
-//}
-
-//int main()
-//{
-//	char* a[] = { "work", "at", "alibaba" };
-//	char**pa = a;
-//	pa++;
-//	printf("%s\n", *pa);
-//	return 0;
-//}
-
-//char* reserve(char* str)
-//{
-//	char* ret = str;
-//	assert(str);
-//	int len = strlen(str);
-//	char* left = str;
-//	char* right = str + len - 1;
-//	while (left < right)
+//	int money = 0;
+//	int total = 0;
+//	int empty = 0;
+//	scanf("%d", &money);
+//	//买的汽水
+//	total = money;
+//	empty = money;
+//	//换的汽水
+//	while (empty >= 2)
 //	{
-//		char tem = *left;
-//		*left = *right;
-//		*right = tem;
-//		left++;
-//		right--;
+//		total = total + (empty / 2);
+//		empty = (empty / 2) + (empty % 2);
 //	}
-//	return ret;
-//}
-//
-//int main()
-//{
-//	char arr[100] = { 0 };
-//	gets(arr);
-//	reserve(arr);
-//	printf("%s\n", arr);
+//	printf("total = %d\n", total);
 //	return 0;
 //}
+
 //int main()
 //{
-//	int a = 0;
-//	int n = 0;
-//	scanf("%d%d", &a, &n);
-//	int sum = 0;
-//	int ret = 0;
+//	unsigned int a = -10;
+//	printf("%u\n", a);
+//	printf("%d\n", a);
+//	return 0;
+//}
+
+//int main()
+//{
+//	int arr[10][10] = { 0 };
 //	int i = 0;
-//	for (i = 0; i < n; i++)
+//	int j = 0;
+//	for (i = 0; i < 10; i++)
 //	{
-//		ret = ret * 10 + a;
-//		sum += ret;
+//		for (j = 0; j < 10; j++)
+//		{
+//			if (0 == j)
+//			{
+//				arr[i][j] = 1;
+//			}
+//			if (i == j)
+//			{
+//				arr[i][j] = 1;
+//			}
+//			if (i >= 2 && j >= 1)
+//			{
+//				arr[i][j] = arr[i - 1][j] + arr[i - 1][j - 1];
+//			}
+//		}
 //	}
-//	printf("%d\n", sum);
+//	//dayin
+//	for (i = 0; i < 10; i++)
+//	{
+//		for (j = 0; j <= i; j++)
+//		{
+//			printf("%d ", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
 //	return 0;
 //}
 
 //int main()
 //{
-//	//1.计算i的位数
-//	int i = 0;
-//	for (i = 1; i <= 10000; i++)
-//	{
-//		int tem = i;
-//		int sum = 0;
-//		int n = 1;
-//		while (tem /= 10)
-//		{
-//			n++;
-//		}
-//	//2.计算i的每位数的n次方之和sum
-//		tem = i;
-//		while (tem)
-//		{
-//			sum += (int)pow(tem % 10, n);
-//			tem /= 10;
-//		}
-//	//3.比较i与sum是否相等
-//		if (i == sum)
-//		{
-//			printf("%d ", i);
-//		}
-//	}
-//	printf("\n");
-//	
-//	
+//	int i, j = 2;
+//	printf("%d %d\n", i, j);
 //	return 0;
 //}
-//     *
-//    ***
-//   *****
-//  *******
-// *********
-//***********
+
 int main()
 {
-	int i = 0;
-	int line = 0;
-	scanf("%d", &line);
-	//上部分
-	for (i = 0; i < line; i++)
+	int killer = 0;
+	for (killer = 'a'; killer <= 'd'; killer++)
 	{
-		//先打印空格
-		int j = 0;
-		for (j = 0; j < line - 1 - i; j++)
+		if ((killer != 'a') + (killer == 'c') + (killer == 'd') + (killer != 'd') == 3)
 		{
-			printf(" ");
+			printf("%c\n", killer);
 		}
-		//打印*
-		for (j = 0; j <2*i+1 ; j++)
-		{
-			printf("*");
-		}
-		printf("\n");
 	}
-	//下部分
-	for (i = 0; i < line - 1; i++)
-	{
-		//daying 
-		int j = 0;
-		for (j = 0; j <=i ; j++)
-		{
-			printf(" ");
-		}
-		//daying*
-		for (j = 0; j <2*(line-1-i)-1; j++)
-		{
-			printf("*");
-		}
-		printf("\n");
-	}
-	
 	return 0;
 }
