@@ -1,84 +1,146 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-#include <stdio.h>
-//喝汽水问题，一瓶汽水1元钱，两个空瓶可以换一瓶汽水，20元可以喝多少汽水
+
+//找出比赛排名
+
 //int main()
 //{
-//	int money = 0;
-//	int total = 0;
-//	int empty = 0;
-//	scanf("%d", &money);
-//	//买的汽水
-//	total = money;
-//	empty = money;
-//	//换的汽水
-//	while (empty >= 2)
+//	int a = 0;
+//	int b = 0;
+//	int c = 0;
+//	int d = 0;
+//	int e = 0;
+//	for (a = 1; a <= 5; a++)
 //	{
-//		total = total + (empty / 2);
-//		empty = (empty / 2) + (empty % 2);
+//		for (b = 1; b <= 5; b++)
+//		{
+//			for (c = 1; c <= 5; c++)
+//			{
+//				for (d = 1; d <= 5; d++)
+//				{
+//					for (e = 1; e <= 5; e++)
+//					{
+//						if (((b == 2) + (a == 3) == 1) &&
+//							((b == 2) + (e == 3) == 1) &&
+//							((c == 1) + (d == 2) == 1) &&
+//							((c == 5) + (d == 3) == 1) &&
+//							((e == 4) + (a == 1) == 1) 
+//							)
+//						{
+//							if (a*b*c*d*e == 120)
+//							{
+//								printf("a= %d b= %d c= %d d= %d e= %d\n", a, b, c, d, e);
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
 //	}
-//	printf("total = %d\n", total);
+//	return 0;
+//
+//}
+//#include <math.h>
+//int main()
+//{
+//	int a = 2;
+//	int b  = pow(a, 3);
+//	printf("%d\n", b);
 //	return 0;
 //}
 
 //int main()
 //{
-//	unsigned int a = -10;
-//	printf("%u\n", a);
-//	printf("%d\n", a);
+//	int* a = 1;
+//	printf("%d\n", *a);
 //	return 0;
 //}
 
 //int main()
 //{
-//	int arr[10][10] = { 0 };
+//	char* arr[] = { "hello", "world" };
+//	char*(*p)[2] = &arr;
+//	printf("%s\n", *arr);
+//	return 0;
+//}
+
+//实现字符串旋转
+//#include <string.h>
+//#include <assert.h>
+//void left_move(char* arr, int k)
+//{
+//	assert(arr);
+//	int len = strlen(arr);
+//	char* left = arr;
+//	char* right = arr + len;
 //	int i = 0;
-//	int j = 0;
-//	for (i = 0; i < 10; i++)
+//	for (i = 0; i < k; i++)
 //	{
-//		for (j = 0; j < 10; j++)
+//		char tmp = *arr;
+//		int j = 0;
+//		for (j = 0; j < len - 1; j++)
 //		{
-//			if (0 == j)
-//			{
-//				arr[i][j] = 1;
-//			}
-//			if (i == j)
-//			{
-//				arr[i][j] = 1;
-//			}
-//			if (i >= 2 && j >= 1)
-//			{
-//				arr[i][j] = arr[i - 1][j] + arr[i - 1][j - 1];
-//			}
+//			*(arr + j) = *(arr + j + 1);
 //		}
+//		*(arr + len - 1) = tmp;
 //	}
-//	//dayin
-//	for (i = 0; i < 10; i++)
+//}
+//
+//int main()
+//{
+//	char arr[] = "abcdef";
+//	int k = 0;
+//	int len = strlen(arr);
+//	scanf("%d", &k);
+//	if (k <= len &&k >= 0)
 //	{
-//		for (j = 0; j <= i; j++)
-//		{
-//			printf("%d ", arr[i][j]);
-//		}
-//		printf("\n");
+//		left_move(arr, k);
+//		printf("%s\n", arr);
 //	}
+//
+//	else
+//		printf("输入数字错误，请重新输入\n");
 //	return 0;
 //}
 
-//int main()
-//{
-//	int i, j = 2;
-//	printf("%d %d\n", i, j);
-//	return 0;
-//}
+//检查一个字符串是否是另外一个字符串自旋得到的
+#include <stdio.h>
+#include <assert.h>
+#include <string.h>
+
+int is_left_move(char* arr, char* str)
+{
+	assert(arr);
+	assert(str);
+	int len1 = strlen(arr);
+	int len2 = strlen(str);
+	if (len2 != len1)
+	{
+		return 0;
+	}
+	strncat(arr, arr, len1);
+	char* ret = strstr(arr, str);
+	if (ret == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
+}
 
 int main()
 {
-	int killer = 0;
-	for (killer = 'a'; killer <= 'd'; killer++)
+	char arr1[30] = "abcdef";
+	char arr2[] = "cdefa";
+	int ret = is_left_move(arr1, arr2);
+	if (ret == 1)
 	{
-		if ((killer != 'a') + (killer == 'c') + (killer == 'd') + (killer != 'd') == 3)
-		{
-			printf("%c\n", killer);
-		}
+		printf("Yes!\n");
+	}
+	else
+	{
+		printf("No!\n");
 	}
 	return 0;
 }
