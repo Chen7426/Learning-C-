@@ -1,71 +1,148 @@
+#define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
 #include <assert.h>
-
-////实现my_strlen
-//
-//int my_strlen(char* arr)
+#include <string.h>
+//int main()
 //{
-//	assert(arr);
-//	int count = 0;
-//	while (*arr++)
+//	char* p = "abcdef";
+//	printf("%c\n", *(p+1));//b
+//	return 0;
+//}
+//实现my_strcmp,
+
+//int my_strcmp(const char* str1, const char* str2)
+//{
+//	assert(str1);
+//	assert(str2);
+//	while (*str1++ == *str2++)
 //	{
-//		count++;
+//		if (*str1 == '\0')
+//		{
+//			return 0;
+//		}
 //	}
-//	return count;
+//	/*if (*str1 > *str2)
+//	{
+//		return 1;
+//	}
+//	else
+//	{
+//		return -1;
+//	}*/
+//
+//	return (*str1 - *str2);
+//
 //}
 //
 //int main()
 //{
-//	char arr[] = "hello world !";
-//	int ret = my_strlen(arr);
-//	printf("%d\n", ret);
+//	char* str1 = "abced";
+//	char* str2 = "abcdef";
+//	int ret = my_strcmp(str1, str2);
+//	if (ret == 0)
+//	{
+//		printf("str1 = str2");
+//	}
+//	else if (ret > 0)
+//	{
+//		printf("str1 > str2");
+//	}
+//	else
+//	{
+//		printf("str1 < str2");
+//	}
+//	return 0;
+//}
+//strstr使用方法
+//int main()
+//{
+//	char* p1 = "abcdef";
+//	char* p2 = "cde";
+//	char* ret = strstr(p1, p2);
+//	printf("%s\n", ret);
 //	return 0;
 //}
 
-////实现my_strcpy,
-//char* my_strcpy(char* dest, const char* src)
+//int main()
 //{
-//	assert(dest);
-//	assert(src);
-//	char* ret = dest;
-//	while (*dest++ = *src++)
+//	const char* p = "abcd";
+//	const char* p2 = "cdef";
+//	while (*p)
 //	{
-//		;
+//		while (*p == *p2)
+//		{
+//			p++;
+//			p2++;
+//		}
+//		p++;
 //	}
-//	return ret;
+//	return 0;
 //}
+
+//实现my_strstr
+
+//char* my_strstr(char* p1, char* p2)
+//{
+//	assert(p1);//断言，防止assert为空指针
+//	assert(p2);
+//	char* s1;//提前设置一个变量，
+//	char* s2;
+//	char* cur = p1;
+//	if (*p2 == '\0')//判断p2是不是空字符
+//	{
+//		return p1;
+//	}
+//	//********************//
+//	while (*cur)//判断s1有没有寻找完
+//	{
+//		s1 = cur;//返回上次相等的地方
+//		s2 = p2;
+//		while (*s1&&*s2 && (*s1 == *s2))
+//		{
+//			s1++;
+//			s2++;
+//		}
+//		if (*s2 == '\0')
+//		{
+//			return cur;
+//		}
+//		cur++;
+//	}
+//	return NULL;
+//}
+//
 //
 //int main()
 //{
-//	char arr1[30] = "########";
-//	char arr2[] = "hello";
-//	my_strcpy(arr1, arr2);
-//	printf("%s\n", arr1);
+//	char* p1 = "abcdef";
+//	char* p2 = "acdef";
+//	char* ret = my_strstr(p1, p2);
+//	printf("%s\n", ret);
 //	return 0;
 //}
 
-//实现my_strcat
-char* my_strcat(char* dest, const char* src)
-{
-	assert(dest);
-	assert(src);
-	char* ret = dest;
-	while (*dest)
-	{
-		dest++;
-	}
-	while (*dest++ = *src++)
-	{
-		;
-	}
-	return ret;
-}
-
+//strtok使用案例
+//***********************************************//
 int main()
 {
-	char arr1[30] = "hello ";
-	char arr2[] = "world";
-	my_strcat(arr1, arr2);
-	printf("%s\n", arr1);
+	char arr1[] = "176064@qq.com";
+	char arr2[] = "@.";//定义要分割的符号
+	char buf[60] = { 0 };
+	strcpy(buf, arr1);//拷贝一份arr1，防止被破坏
+		//第一次分割**************
+		//char* ret = strtok(buf, arr2);
+		//printf("%s\n", ret);
+		//第二次分割*************
+		//ret = strtok(NULL, arr2);
+		//printf("%s\n", ret);
+		//第三次分割************
+		//ret = strtok(NULL, arr2);
+		//printf("%s\n", ret);
+	//使用for来实现strtok函****************
+	char* ret = NULL;
+	for (ret = strtok(buf, arr2); ret != NULL; ret = strtok(NULL, arr2))
+	{
+		printf("%s\n", ret);
+	}
 	return 0;
 }
