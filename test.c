@@ -1,148 +1,142 @@
-#define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
-#include <assert.h>
-#include <string.h>
+////#include <string,h>
+////memcpy 使用方法******************
 //int main()
 //{
-//	char* p = "abcdef";
-//	printf("%c\n", *(p+1));//b
+//	int arr1[] = { 1, 2, 3, 4, 5 };
+//	int arr2[6] = { 0 };
+//	//memcpy需要的三个参数
+//	memcpy(arr2, arr1, sizeof(arr1));
 //	return 0;
 //}
-//实现my_strcmp,
+//********************************************************
 
-//int my_strcmp(const char* str1, const char* str2)
+////实现my_memcpy
+
+//#include <assert.h>
+//void* my_memcpy(void* dest, void* src, size_t num)
 //{
-//	assert(str1);
-//	assert(str2);
-//	while (*str1++ == *str2++)
+//	//检验指针的有效性
+//	assert(dest);
+//	assert(src);
+//	//最后返回dest的首地址，防止地址丢失
+//	void* ret = dest;
+//	//开始进行拷贝过程
+//	while (num--)
 //	{
-//		if (*str1 == '\0')
+//		(*(char*)dest) = (*(char*)src);//强制类型转换，让void*可以解引用和++，--
+//		++(char*)dest;
+//		++(char*)src;
+//	}
+//	return ret;
+//}
+//
+//int main()
+//{
+//	int arr1[] = { 1, 2, 3, 4, 5 };
+//	int arr2[5] = { 0 };
+//	my_memcpy(arr2, arr1, sizeof(arr1));
+//	return 0;
+//}
+//************************************************************
+
+//int main()
+//{
+//	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+//	int arr2[10] = { 0 };
+//	int i = 0;
+//	memcpy(arr2, arr, 20);
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d ", arr2[i]);
+//	}
+//	return 0;
+//}
+
+//********************************************************
+
+////实现my_memmove
+//
+//#include <assert.h>
+//void* my_memmove(void* dest, const void* src, size_t num)
+//{
+//	//检验指针有效性
+//	assert(dest);
+//	assert(src);
+//	void* ret = dest;
+//	//正常情况，从前往后复制
+//	if (dest < src)
+//	{
+//		while (num--)
 //		{
-//			return 0;
+//			*(char*)dest = *(char*)src;
+//			++(char*)dest;
+//			++(char*)src;
 //		}
 //	}
-//	/*if (*str1 > *str2)
-//	{
-//		return 1;
-//	}
+//	//当dest>=src的情况，从后往前拷贝
 //	else
 //	{
-//		return -1;
-//	}*/
-//
-//	return (*str1 - *str2);
-//
-//}
-//
-//int main()
-//{
-//	char* str1 = "abced";
-//	char* str2 = "abcdef";
-//	int ret = my_strcmp(str1, str2);
-//	if (ret == 0)
-//	{
-//		printf("str1 = str2");
-//	}
-//	else if (ret > 0)
-//	{
-//		printf("str1 > str2");
-//	}
-//	else
-//	{
-//		printf("str1 < str2");
-//	}
-//	return 0;
-//}
-//strstr使用方法
-//int main()
-//{
-//	char* p1 = "abcdef";
-//	char* p2 = "cde";
-//	char* ret = strstr(p1, p2);
-//	printf("%s\n", ret);
-//	return 0;
-//}
-
-//int main()
-//{
-//	const char* p = "abcd";
-//	const char* p2 = "cdef";
-//	while (*p)
-//	{
-//		while (*p == *p2)
+//		while (num--)
 //		{
-//			p++;
-//			p2++;
+//			//此时num进入时，已经被减一了，刚好加上dest或src是他们的末地址
+//			*((char*)dest + num) = *((char*)src+num);
 //		}
-//		p++;
 //	}
-//	return 0;
+//	return ret;
 //}
-
-//实现my_strstr
-
-//char* my_strstr(char* p1, char* p2)
-//{
-//	assert(p1);//断言，防止assert为空指针
-//	assert(p2);
-//	char* s1;//提前设置一个变量，
-//	char* s2;
-//	char* cur = p1;
-//	if (*p2 == '\0')//判断p2是不是空字符
-//	{
-//		return p1;
-//	}
-//	//********************//
-//	while (*cur)//判断s1有没有寻找完
-//	{
-//		s1 = cur;//返回上次相等的地方
-//		s2 = p2;
-//		while (*s1&&*s2 && (*s1 == *s2))
-//		{
-//			s1++;
-//			s2++;
-//		}
-//		if (*s2 == '\0')
-//		{
-//			return cur;
-//		}
-//		cur++;
-//	}
-//	return NULL;
-//}
-//
 //
 //int main()
 //{
-//	char* p1 = "abcdef";
-//	char* p2 = "acdef";
-//	char* ret = my_strstr(p1, p2);
-//	printf("%s\n", ret);
+//	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+//	int i = 0;
+//	my_memmove(arr, arr+2, 20);
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
+//
+////********************************************************
+
+//int main()
+//{
+//	char ch;
+//	ch = '\4';
+//	printf("%c\n", ch);
 //	return 0;
 //}
 
-//strtok使用案例
-//***********************************************//
+//********************************************************
+
+//int main()
+//{
+//	int arr1[] = { 1, 2, 3, 4, 5, 6 };
+//	int arr2[] = { 3, 2, 5, 6, 8, 7 };
+//	int ret = memcmp(arr1, arr2, 2);
+//	printf("%d\n", ret);
+//	return 0;
+//}
+
+//********************************************************
+
+//实现一个描述学生的结构体类型
+//描述学生属性：姓名，性别，电话 年龄
+typedef struct Stu
+{
+	char name[20];
+	char sex[5];
+	char id[12];
+	int age;
+}Stu;
+
 int main()
 {
-	char arr1[] = "176064@qq.com";
-	char arr2[] = "@.";//定义要分割的符号
-	char buf[60] = { 0 };
-	strcpy(buf, arr1);//拷贝一份arr1，防止被破坏
-		//第一次分割**************
-		//char* ret = strtok(buf, arr2);
-		//printf("%s\n", ret);
-		//第二次分割*************
-		//ret = strtok(NULL, arr2);
-		//printf("%s\n", ret);
-		//第三次分割************
-		//ret = strtok(NULL, arr2);
-		//printf("%s\n", ret);
-	//使用for来实现strtok函****************
-	char* ret = NULL;
-	for (ret = strtok(buf, arr2); ret != NULL; ret = strtok(NULL, arr2))
-	{
-		printf("%s\n", ret);
-	}
+	Stu s = { "zhangsan", "男", "123456", 20 };
+	Stu* ps = &s;
+	printf("%s %s %s %d\n", s.name, s.sex, s.id, s.age);
+	printf("%s %s %s %d\n", ps->name ,ps->sex ,ps->id ,ps->age );
+	printf("%d\n", sizeof(ps));
 	return 0;
 }
