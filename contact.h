@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-#define MAX 1000
+
+#define DEFAULT_SZ 3
 #define MAX_NAME 20
 #define MAX_SEX 5
 #define MAX_TELE 12
@@ -7,6 +8,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 enum Option
 {
@@ -30,8 +32,8 @@ struct PeoInfo
 //通讯录类型
 struct Contact
 {
-	struct PeoInfo date[MAX];
-	
+	struct PeoInfo *date;
+	int capacity;
 	int size;
 };
 //初始化通讯录

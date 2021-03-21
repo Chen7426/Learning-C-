@@ -3,19 +3,42 @@
 //初始化通讯录
 void InitContact(struct Contact *ps)
 {
-	memset(ps->date, 0, sizeof(ps->date));
-	ps->size = 0;//是通讯录开始只有0个元素
+	ps->date = (struct PeoInfo*)malloc(DEFAULT_SZ * sizeof(struct PeoInfo));//先开辟三个空间
+	//判断空间有没有开辟成功
+	if (ps->date == NULL)
+	{
+		return;
+	}
+	ps->size = 0;//初始化，让元素计数也为0；
+	ps->capacity = DEFAULT_SZ;//容量最开始从3个开始
+}
+//检查容量函数
+void CheckCapacity(struct Contact *ps)
+{
+	if (ps->size == ps->capacity)//判断有没有满
+	{
+		//增容算法
+		struct PeoInfo* ptr = (struct PeoInfo*)realloc(ps->date, (ps->capacity + 2)*sizeof(struct PeoInfo));
+		if (ptr != NULL)
+		{
+			ps->date = ptr;
+			ps->capacity += 2;
+			printf("增容成功\n");
+		}
+		else
+		{
+			printf("增容失败\n");
+		}
+	}
 }
 
 //增加通讯好友
 void AddContact(struct Contact *ps)
 {
-	if (ps->size == MAX)
-	{
-		printf("通讯录人员已满\n");
-	}
-	else
-	{
+	//先检测容量有没有满，需不需要增容
+	//1.如果满了，就增容
+	//2.如果没满，啥事不干
+	CheckCapacity(ps);
 		printf("请输入名字:>");
 		scanf("%s", ps->date[ps->size].name);
 		printf("请输入年龄:>");
@@ -28,7 +51,6 @@ void AddContact(struct Contact *ps)
 		scanf("%s", ps->date[ps->size].addr);
 		ps->size++;
 		printf("添加成功\n");
-	}
 }
 
 //打印通讯录
