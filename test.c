@@ -1,61 +1,53 @@
-#include "contact.h"
-void menu()
-{
-	printf("***********************************************\n");
-	printf("******** 1. add            2. del   ***********\n");
-	printf("******** 3. search         4. modify***********\n");
-	printf("******** 5. show           6. sort  ***********\n");
-	printf("******** 0. exit                    ***********\n");
-	printf("***********************************************\n");
+#include <stdio.h>
+//int main()
+//{
+//	printf("%s\n", __FILE__);
+//	printf("%d\n", __LINE__);
+//	return 0;
+//}
 
-}
-//释放空间函数，
-void DestroyContact(struct Contact* ps)
-{
-	free(ps->date);
-	ps->date  = NULL;
-}
+//#define max 100
+//int main()
+//{
+//	printf("%s\n", max);
+//	return 0;
+//}
 
+//#define SQUARE(X) X*X
+//int main()
+//{
+//	int ret = SQUARE((5+1));
+//	printf("%d\n", ret);
+//	return 0;
+//}
+
+//int main()
+//{
+//	printf("hello world\n");
+//	printf("hello " "world\n");
+//	return 0;
+//}
+//#define PRINT(X) printf("the value of "#X" is %d\n",X)
+////void print(int a)
+////{
+////	PRINT(a);
+////	PRINT(a);
+////}
+//
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	PRINT(a);
+//	PRINT(b);
+//	return 0;
+//}
+#define MAX(X,Y)  ((X)>(Y)?(X):(Y))
 int main()
 {
-	int input = 0;
-	//创建一个可以存放1000个好友的通讯录
-	struct Contact con;
-	//初始化通讯录
-	InitContact(&con);
-
-	do
-	{
-		menu();
-		printf("请选择：>");
-		scanf("%d", &input);
-		switch (input)
-		{
-		case ADD:
-			AddContact(&con);
-			break;
-		case DEL:
-			DelContact(&con);
-			break;
-		case SEARCH:
-			SearchContact(&con);
-			break;
-		case MODIFY:
-			ModifyContact(&con);
-			break;
-		case SHOW:
-			ShowContact(&con);
-			break;
-		case SORT:
-			break;
-		case EXIT:
-			DestroyContact(&con);
-			printf("程序退出\n");
-			break;
-		default:
-			printf("输入错误，请重新输入:>\n");
-			break;
-		}
-	} while (input);
+	int a = 10;
+	int b = 20;
+	int  max = MAX(a, b);
+	printf("%d\n", max);
 	return 0;
 }
